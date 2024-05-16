@@ -26,7 +26,8 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(binding.root)
+
 
         val  mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this@MainActivity)
@@ -49,7 +50,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
 
                     if (latitude != null && longitude != null) {
                         val location = LatLng(latitude, longitude)
-                        mMaps.addMarker(MarkerOptions().position(location).title("Marker"))
+                        mMaps.addMarker(MarkerOptions().position(location).title("Marker").snippet("Latitude: $latitude, Longitude: $longitude"))
                         mMaps.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 15f))
                     }
                 }
